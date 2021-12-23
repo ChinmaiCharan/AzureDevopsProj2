@@ -53,9 +53,13 @@ Instructions for running the Python project.
 ./make_prediction.sh
 ![image](https://user-images.githubusercontent.com/95535252/147283768-97bb0c4b-4179-4dfd-8c4a-18023f1b47e4.png)
 
+Create GitHub Action
+![Github Action](https://user-images.githubusercontent.com/95535252/147286406-35e15490-df9b-4989-a251-0db900d8a7bd.JPG)
 
 * Project running on Azure App Service
-Create an App Service in Azure. 
+Create an App Service in Azure.
+
+
 Our App Service is called proj2cicd and the resource group is called proj2rg:
 
 az webapp up -n proj2cicd -g proj2rg
@@ -69,22 +73,51 @@ webapp infrastructure is created and verify the frontend:
 
 * Output of a test run
 
-* Successful deploy of the project in Azure Pipelines.  [Note the official documentation should be referred to and double checked as you setup CI/CD](https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/python-webapp?view=azure-devops).
+* Successful deploy of the project in Azure Pipelines.  (https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/python-webapp?view=azure-devops).
 
-* Running Azure App Service from Azure Pipelines automatic deployment
+Next, create the pipeline in Azure DevOps. More information on this process can be found here. The basic steps to set up the pipeline are:
 
-* Successful prediction from deployed flask app in Azure Cloud Shell.  [Use this file as a template for the deployed prediction](https://github.com/udacity/nd082-Azure-Cloud-DevOps-Starter-Code/blob/master/C2-AgileDevelopmentwithAzure/project/starter_files/flask-sklearn/make_predict_azure_app.sh).
-The output should look similar to this:
+Go to https://dev.azure.com and sign in.
+Create a new private project.
+Under Project Settings create a new service connection to Azure Resource Manager, scoped to your subscription and resource group
+![image](https://user-images.githubusercontent.com/95535252/147286650-2794a94c-067f-493b-b8a7-d8bda096617d.png)
 
-```bash
-udacity@Azure:~$ ./make_predict_azure_app.sh
-Port: 443
-{"prediction":[20.35373177134412]}
-```
+Create a new pipeline linked to your GitHub repo.
+![image](https://user-images.githubusercontent.com/95535252/147286879-0a0a0ac6-a3db-4a15-9d32-634a2a5db970.png)
 
-* Output of streamed log files from deployed application
+To test the app running in Azure App Service, edit line 28 of the make_predict_azure_app.sh script with the DNS name of your app. Then run the script:
 
-> 
+./make_predict_azure_app.sh 
+![image](https://user-images.githubusercontent.com/95535252/147288231-5a8d50cd-6260-47a3-bf5f-7c06b5b50bb9.png)
+
+![image](https://user-images.githubusercontent.com/95535252/147288299-583f26dd-f609-4bae-97e3-4b7fe0ecc339.png)
+
+
+![image](https://user-images.githubusercontent.com/95535252/147288556-5b04d576-efee-4c00-b13d-cc4ae05afd45.png)
+
+
+
+Load testing
+We can use locust to do a load test against our application. In this example we will do a load test against the app running locally rather than in Azure.
+
+Install locust:
+
+pip install locust
+Ensure the app is running:
+
+python app.py
+![image](https://user-images.githubusercontent.com/95535252/147288676-86b6c02d-786f-4178-8044-e205fdb41361.png)
+
+Start locust:
+![image](https://user-images.githubusercontent.com/95535252/147288723-8221d284-a3c5-4c09-8f7a-14dd6feeb1af.png)
+
+
+locust
+Open a browser and go to http://localhost:8089. Enter the total number of users to simulate, spawn rate, set the host to localhost:5000, and click Start Swarming:
+![image](https://user-images.githubusercontent.com/95535252/147289030-f4a84d9e-0e74-4eb3-af0f-51ac7bfc3c25.png)
+
+![image](https://user-images.githubusercontent.com/95535252/147288975-31ced630-a89f-4db5-89a1-246cccb3c7ba.png)
+![image](https://user-images.githubusercontent.com/95535252/147288992-f9010834-5df9-431e-a168-41f0cda608a1.png)
 
 ## Enhancements
 
