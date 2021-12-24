@@ -1,18 +1,17 @@
 # Overview
 
-This is my submission for the 'Building a CI/CD Pipeline' project as part of the 'DevOps Engineer for Microsoft Azure' nanodegree program from Udacity.
-
-This project contains a python application that is designed to predict housing prices in Boston (I did not create the python app myself). This repo will enable you to:
-
+As part of the Udacity Azure Devops Nano Degree, This is the second project 'Building a CI/CD Pipeline'. 
+In this project, we will be doing the below tasks
+Create a GitHub repository and integrate it to the Azure
 Deploy the app in Azure CloudShell
 Deploy the app as an Azure App Service
-Any commits to the GitHub repo trigger automated code testing using GitHub Actions. A pipeline has been created in Azure DevOps, and the updated code is also automatically tested in Azure DevOps and deployed to the Azure App Service.
+GitHub Action along with Azure Devops Pipeline to trigger CI/ CD when any commit is made to the Repo.
 
 ## Project Plan
 <TODO: Project Plan
 
-* A link to a Trello board for the project
-* A link to a spreadsheet that includes the original and final project plan>
+* [Trello board](https://trello.com/b/j7XvQMlY/azure-proj-2) link used for tracking the project.
+* [Spreadsheet](https://github.com/ChinmaiCharan/AzureDevopsProj2/files/7774851/project-management-template.xlsx) that contains the project time line.
 
 ## Instructions
 * Architectural Diagram
@@ -121,7 +120,7 @@ Open a browser and go to http://localhost:8089. Enter the total number of users 
 
 ## Enhancements
 
-<TODO: A short description of how to improve the project in the future>
+Currently, there is only a single branch in GitHub. In the future it would be good to create multiple branches, so code can initially be tested and deployed in a staging environment. If it works correctly in the staging environment the changes could then be merged into the production branch and the code deployed into the production environment.
 
 ## Demo 
 
