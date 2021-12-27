@@ -1,3 +1,5 @@
+![Python application test with Github Actions](https://github.com/ChinmaiCharan/AzureDevopsProj2/workflows/Git_Action/badge.svg)
+
 # Overview
 
 As part of the Udacity Azure Devops Nano Degree, This is the second project 'Building a CI/CD Pipeline'. <br />
